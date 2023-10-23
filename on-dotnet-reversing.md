@@ -327,4 +327,42 @@ CIL opcode들의 전체 셋은 다음 부분들로 나누어질 수 있습니다
 
 ![msilopcodes2](https://github.com/mollose/Formbook-Analysis/assets/57161613/fc0f434d-1a58-4ddc-a876-694574952813)
 
-
+### rem
+value1을 value2로 나눈 나머지를 스택에 push합니다.
+### ldelem.u1
+우선 array와 index를 스택에 push한 후 사용합니다. array 내 index 위치의 unsigned int8 타입의 요소를 스택의 top에 int32 형식으로 로드합니다.
+### ldelem.ref
+array가 객체 참조 배열이라는 점, 그리고 스택에 요소를 로드할 때 해당 요소의 타입이 O라는 점을 제외하곤 ldelem.u1과 동일합니다.
+### stelem.i1
+우선 array, index, 그리고 value를 스택에 push한 후 사용합니다. array 내 주어진 index 위치의 값을 스택 내의 int8 value로 대체합니다.
+### conv.u1
+push된 값을 int8로 변환한 뒤, 스택에 int32 형식으로 push합니다.
+### Callvirt
+우선 객체 참조 obj를 스택에 push한 후 사용합니다. 이후 push된 매개변수들과 함께 메서드가 호출되고 제어는 메서드 메타데이터 토큰에 의해 참조된 obj 내의 메서드에 전달됩니다.(매개변수들이 pop될 때 obj 역시 스택에서 pop됨)
+### stsfld
+정적 필드의 값을 계산 스택의 값으로 변경합니다.
+### newarr
+배열 요소들의 수를 스택에 push한 후 사용합니다. 새 배열에 대한 참조가 스택 내로 push됩니다.
+### dup
+스택의 top 요소를 복사하고, 스택에 두 동일한 값들을 남겨놓습니다.
+### sub.ovf 
+오버플로 검사와 함께 value1으로부터 value2를 뺍니다.
+### ldlen 
+우선 array를 스택에 push한 후 사용합니다. array의 길이가 스택으로 push됩니다.
+### 예시
+”x“ 값(상수 0)을 메모리로 로드한 뒤 인덱스 ‘0’(지역 변수 x)에 저장합니다.
+```
+.locals init ([0] int32 x, [1] int32 i, [2] bool CS$4$0000)
+IL_0000: nop
+IL_0001: ldc.i4.0
+IL_0002: stloc.0
+```
+‘i’ 값이 7보다 작을 경우 IL_0007로 분기합니다.
+```
+IL_001e: ldloc.1
+IL_001f: ldc.i4.7
+IL_0020: clt
+IL_0022: stloc.2
+IL_0023: ldloc.2
+IL_0024: brtrue.s		IL_0007
+```
