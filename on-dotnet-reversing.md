@@ -154,7 +154,7 @@ CIL 코드를 사용해 어셈블리를 빌드하거나 수정할 때, peverify.
     IL_0000: ldarg.0
     IL_0001: ldfld		string MathFun::’<Name>k__BackingField’       
     IL_0006: stloc.0
-    IL_0007: br.s     IL_0009
+    IL_0007: br.s         IL_0009
     IL_0009: ldloc.0       
     IL_000a: ret
   }
