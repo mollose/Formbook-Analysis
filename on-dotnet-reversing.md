@@ -66,3 +66,39 @@ Directive들은 하나의 점 접두사에 의해 구문적으로 나타내어�
 codesm 또는 opcode 연산은, 한때 .NET 어셈블리 이름공간과 타입이 CIL 코드에 대해 정의된 타입 구현 로직을 제공합니다.
 
 CIL 코드를 사용해 어셈블리를 빌드하거나 수정할 때, peverify.exe 유틸리티를 이용해 컴파일된 바이너리 이미지가 잘 형식화된 .NET 이미지인지 검증하는 것이 권장됩니다.
+
+</br>
+
+## CIL 예제 #1 : Test.il
+
+```
+// mscorlib 라이브러리에 대한 외부 참조
+// mscorlib.dll은 System.Console 클래스를 포함하는
+// .NET 프레임워크 FCL의 핵심을 담고 있음
+.assembly extern mscorlib {}
+// 어셈블리의 이름
+.assembly FirstApp
+{
+}
+
+// 이름공간 정의
+.namespace FirstApp
+{
+  // 이 클래스는 묵시적으로 System.Object 클래스를 상속받음
+  .class private auto ansi beforefieldinit Test
+  {
+    // cil 키워드는 메서드가 intermediate 코드를 포함함을 나타냄
+    .method public hidebysig static void Main(string[] argd) cil managed
+    {
+      .entrypoint	// Main 함수를 애플리케이션의 엔트리 포인트로 지정
+      // 메모리 스택 크기를 1 슬롯으로 설정
+      .maxstack	1
+      // 문자열을 메모리로 로드함
+      ldstr		"Welcome to CIL programming world“
+      // 메모리로부터 한 항목을 가져온 뒤 WriteLine 메서드를 이용해 출력
+      call		void [mscorlib] System.Console::WriteLine(string)
+      ret
+    }
+  }
+}
+```
