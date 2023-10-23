@@ -1,0 +1,7 @@
+C:\Users\s_hagoo119\source\repos\Project\Temp\bin\Debug\Temp.exe.config
+C:\Users\s_hagoo119\source\repos\Project\Temp\bin\Debug\Temp.exe
+C:\Users\s_hagoo119\source\repos\Project\Temp\bin\Debug\Temp.pdb
+C:\Users\s_hagoo119\source\repos\Project\Temp\obj\Debug\Temp.csprojAssemblyReference.cache
+C:\Users\s_hagoo119\source\repos\Project\Temp\obj\Debug\Temp.csproj.CoreCompileInputs.cache
+C:\Users\s_hagoo119\source\repos\Project\Temp\obj\Debug\Temp.exe
+C:\Users\s_hagoo119\source\repos\Project\Temp\obj\Debug\Temp.pdb

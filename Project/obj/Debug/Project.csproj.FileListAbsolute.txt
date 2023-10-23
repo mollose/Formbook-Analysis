@@ -1,0 +1,14 @@
+C:\Users\s_hagoo119\source\repos\Project\Project\bin\Debug\Project.exe.config
+C:\Users\s_hagoo119\source\repos\Project\Project\bin\Debug\Project.exe
+C:\Users\s_hagoo119\source\repos\Project\Project\bin\Debug\Project.pdb
+C:\Users\s_hagoo119\source\repos\Project\Project\obj\Debug\Project.csprojAssemblyReference.cache
+C:\Users\s_hagoo119\source\repos\Project\Project\obj\Debug\Project.csproj.CoreCompileInputs.cache
+C:\Users\s_hagoo119\source\repos\Project\Project\obj\Debug\Project.exe
+C:\Users\s_hagoo119\source\repos\Project\Project\obj\Debug\Project.pdb
+E:\문서\악성코드\Formbook\Project\Project\bin\Debug\Project.exe.config
+E:\문서\악성코드\Formbook\Project\Project\bin\Debug\Project.exe
+E:\문서\악성코드\Formbook\Project\Project\bin\Debug\Project.pdb
+E:\문서\악성코드\Formbook\Project\Project\obj\Debug\Project.csprojAssemblyReference.cache
+E:\문서\악성코드\Formbook\Project\Project\obj\Debug\Project.csproj.CoreCompileInputs.cache
+E:\문서\악성코드\Formbook\Project\Project\obj\Debug\Project.exe
+E:\문서\악성코드\Formbook\Project\Project\obj\Debug\Project.pdb
