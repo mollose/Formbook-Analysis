@@ -306,3 +306,8 @@ class directive 역시 다양한 attribute들로 꾸며지며, 다음은 가장 
 
 다음과 같이 클래스 생성자에 문자열 데이터를 전달함으로써 문자열 슬롯을 할당하고 있습니다.
 > .locals init ([0] class MathFun obj)
+
+</br>
+
+## CIL 데이터 타입
+
