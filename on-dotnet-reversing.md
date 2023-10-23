@@ -25,7 +25,7 @@ typedef struct _IMAGE_COR20_HEADER
   IMAGE_DATA_DIRECTORY ManagedNativeHeader;
 } IMAGE_COR20_HEADER;
 ```
-
+<br/>
 
 ## CLR(공용 언어 런타임)
 
