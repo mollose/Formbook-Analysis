@@ -236,3 +236,10 @@ CIL 코드를 사용해 어셈블리를 빌드하거나 수정할 때, peverify.
   }
 }
 ```
+
+</br>
+
+## Assembly Directives
+### .assembly extern
+외부 어셈블리를 나타냅니다. 참조된 어셈블리의 public 타입들과 메서드들은 현재 어셈블리에 대해 가용하게 주어지며 구문은 다음과 같습니다.
+> .assembly extern name as aliasname {}
