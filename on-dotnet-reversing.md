@@ -311,3 +311,4 @@ class directive 역시 다양한 attribute들로 꾸며지며, 다음은 가장 
 
 ## CIL 데이터 타입
 
+![cildatatype](https://github.com/mollose/Formbook-Analysis/assets/57161613/ae407adc-725a-44b8-991f-37ac1d05f396)
