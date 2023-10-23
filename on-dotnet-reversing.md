@@ -243,3 +243,24 @@ CIL 코드를 사용해 어셈블리를 빌드하거나 수정할 때, peverify.
 ### .assembly extern
 외부 어셈블리를 나타냅니다. 참조된 어셈블리의 public 타입들과 메서드들은 현재 어셈블리에 대해 가용하게 주어지며 구문은 다음과 같습니다.
 > .assembly extern name as aliasname {}
+### .assembly
+어셈블리는 다음과 같이 바이너리에 친근한 이름을 명시함으로써 정의될 수 있습니다.
+> .assembly CILType {}
+
+다음과 같은, 어셈블리 블록에 대해 가용한 몇몇 sub-directive들이 존재함
+* .ver
+* .locale
+* .publickey
+### .module 
+다음의 *.exe와 같이, 파일들의 최종 실행 확장자를 지정합니다.
+> .module MathFun.exe
+### .imagebase
+애플리케이션이 로드되는 베이스 주소를 설정합니다. 기본값은 0x00400000입니다.
+### .stackreverse
+스택 크기를 설정합니다. 기본값은 0x00100000입니다.
+### .subsystem
+콘솔 또는 GUI 서브시스템과 같이, 애플리케이션에 의해 사용되는 서브시스템을 나타냅니다. 콘솔 애플리케이션을 위해선 3을, GUI 애플리케이션을 위해선 2를 명시합니다.
+### .corflags
+IL only assembly를 규정하는 CLI 헤더 내의 런타임 플래그를 설정합니다. corflags에 대한 기본값은 1입니다.
+### .maxstack
+실행 중에 스택에 push될 변수들의 최대 개수를 설정합니다. 기본값은 8입니다.
