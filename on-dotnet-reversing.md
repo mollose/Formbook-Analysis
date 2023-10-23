@@ -378,3 +378,86 @@ IL_000b: ldloc.1
 IL_000c: unbox.any  [mscorlib]System.Int32
 IL_00011: stloc.2
 ```
+
+</br>
+
+## 인터페이스
+인터페이스 내에서 필드는 허용되지 않고 멤버 함수는 반드시 public, abstract, 그리고 virtual이어야 합니다.
+```
+.assembly CILComplexTest
+{
+}
+.assembly extern mscorlib
+{
+  .publickeytoken = (B7 7A 5C 56 19 34 E0 89 )
+  .ver 4:0:0:0
+}
+
+.class interface public abstract auto ansi CILComplexTest.Repository
+{
+  .method public hidebysig newslot abstract virtual instance void Display() cil managed
+  {
+  }
+}
+.class public auto ansi beforefieldinit CILComplexTest.test extends [mscorlib]System.Object implements CILComplexTest.Repository
+{
+  .method public hidebysig newslot virtual final instance void Display() cil managed
+  {
+    .maxstack	8
+    IL_0000: nop
+    IL_0001: ldstr	“Hello“
+    IL_0006: call		void [mscorlib]System.Console::WriteLine(string)
+    IL_000b: nop
+    IL_000c: ret
+  }
+}
+
+.class private auto ansi beforefieldinit CILComplexTest.Program extends [mscorlib]System.Object
+{
+  .method private hidebysig static void Main(string[] args) cil managed
+  {
+    .entrypoint
+    .maxstack	8
+    IL_0000: nop
+    IL_0001: newobj	instance void CILComplexTest.test::.ctor()
+    IL_0006: call		instance void CILComplexTest.test::Display()
+    IL_000b: nop
+    IL_000c: ret
+  }
+
+  .method public hidebysig specialname rtsspecialname instance void .ctor() cil managed
+  {
+    .maxstack	8
+    IL_0000: ldarg.0
+    IL_0001: call		instance void [mscorlib]System.Object::.ctor()
+    IL_0006: ret
+  }
+}
+```
+
+</br>
+
+## MSIL 코드 생성
+Visual Studio Command Prompt를 열고 다음 명령을 실행하여 이미 있는 C# 코드 명령어를 MSIL 코드로 변환할 수 있습니다.
+> ILDASM CILComplexTest.exe /out:test.il
+
+</br>
+
+## 메타데이터 및 자동 기술 구성 요소
+코드를 실행하면 런타임은 메타데이터를 메모리로 로드한 다음 참조하여 해당 코드의 클래스, 멤버, 상속 등에 대한 정보를 검색합니다. 메타데이터는 언어와 무관하게 코드에 정의된 모든 형식과 멤버를 기술하며 다음과 같은 정보를 저장합니다.
+### 어셈블리 기술 내용
+* ID(이름, 버전, 문화권, 공개 키)
+* 내보낸 형식
+* 이 어셈블리가 종속된 다른 어셈블리
+* 실행하는 데 필요한 보안 권한
+### 형식 기술 내용
+* 이름, 표시 여부, 기본 클래스 및 구현된 인터페이스
+* 멤버(메서드, 필드, 속성, 이벤트, 중첩 형식)
+### 특성
+* 형식과 멤버를 수정하는 추가 설명적 요소
+### 메타데이터 및 PE 파일 구조
+메타데이터는 .NET PE 파일의 한 섹션에 저장되고 MSIL은 PE 파일의 다른 섹션에 저장됩니다. PE 파일의 메타데이터 부분에는 테이블과 힙 데이터 구조가 있으며 MSIL 부분에는 MSIL 및 PE 파일의 메타데이터 부분을 참조하는 메타데이터 토큰이 있습니다.
+#### 메타데이터 테이블 및 힙
+각 메타데이터 테이블은 프로그램 요소에 대한 정보를 보유합니다. 예를 들어, 한 메타데이터 테이블은 코드의 클래스를 나타내고 다른 테이블은 필드를 나타내는 식이며, 메타데이터 테이블은 다른 테이블과 힙을 참조합니다. 예를 들어, 클래스의 메타데이터 테이블은 메서드의 테이블을 참조합니다. 또한 메타데이터는 문자열, blob, 사용자 문자열 및 GUID라고 하는 네 가지 힙 구조에 정보를 저장합니다. 형식과 멤버의 이름을 지정하는데 사용되는 모든 문자열은 문자열 힙에 저장됩니다. 예를 들어 메서드 테이블은 특정 메서드의 이름을 직접 저장하지는 않지만 문자열 힙에 저장된 메서드의 이름을 가리킵니다.
+#### 메타데이터 토큰 
+메타데이터 테이블의 각 행은 메타데이터 토큰에 의해 PE 파일의 MSIL 부분에서 고유하게 식별됩니다. 메타데이터 토큰은 MSIL에 유지되고 특정 메타데이터 테이블을 참조하는 포인터와 개념적으로 비슷합니다. 메타데이터 토큰은 4바이트 숫자이며, 최상위 바이트는 특정 토큰이 참조하는 메타데이터 테이블(메서드, 형식 등)을 나타내고 나머지 3바이트는 메타데이터 테이블의 행 중에서 현재 나타내고 있는 프로그래밍 요소에 해당하는 행을 지정합니다.
