@@ -539,4 +539,5 @@ System.Resources.ResourceWriter 클래스를 사용하여 프로그래밍 방식
 * 클래스명 : Properties
 * 리소스 위치 : Project\bin\Debug\Resources\Project.Properties.Resources.resources
 * 로딩 방식
+  
   > ResourceManager rsm = ResourceManager.CreateFileBasedResourceManager(“Project.Properties.Resources“, “Resources“, null);
