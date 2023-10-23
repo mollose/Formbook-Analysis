@@ -303,5 +303,6 @@ class directive 역시 다양한 attribute들로 꾸며지며, 다음은 가장 
 이름에 의해 가용하게 되는 지역 변수들을 선언합니다.
 여기선, 다음과 같이 두 정수 타입 지역 변수들을 정의하고 있습니다.
 > .locals init ([0] int32 x, [1] int32 y)
+
 다음과 같이 클래스 생성자에 문자열 데이터를 전달함으로써 문자열 슬롯을 할당하고 있습니다.
 > .locals init ([0] class MathFun obj)
