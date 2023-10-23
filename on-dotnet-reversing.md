@@ -322,5 +322,9 @@ IL_XXX(예를 들어, IL_0000, IL_0002)와 같은 토큰들은 코드 레이블�
 
 ## MSIL Opcodes
 CIL opcode들의 전체 셋은 다음 부분들로 나누어질 수 있습니다.
-![msilopcodes](https://github.com/mollose/Formbook-Analysis/assets/57161613/18a6d414-a438-4754-b1e3-625bd97d658b)
+
+![msilopcodes1](https://github.com/mollose/Formbook-Analysis/assets/57161613/18a6d414-a438-4754-b1e3-625bd97d658b)
+
+![msilopcodes2](https://github.com/mollose/Formbook-Analysis/assets/57161613/fc0f434d-1a58-4ddc-a876-694574952813)
+
 
