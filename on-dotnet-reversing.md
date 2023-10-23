@@ -482,3 +482,16 @@ Visual Studio Command Prompt를 열고 다음 명령을 실행하여 이미 있�
 > public ResourceManager (Type resourceSource)
 * resourceSource : 리소스 관리자가 .resources 파일을 찾는데 필요한 모든 정보를 파생시키는 타입입니다.
 
+</br>
+
+## .resources 파일의 리소스
+System.Resources.ResourceWriter 클래스를 사용하여 프로그래밍 방식으로 코드에서 직접 이진 리소스(.resources) 파일을 만들 수 있습니다. 리소스 파일 생성기(resgen.exe)를 사용하여 텍스트 파일 또는 .resx 파일에서 .resources 파일을 만들 수도 있습니다. .resources 파일에는 문자열 데이터 외에 이진 데이터(바이트 배열) 및 객체 데이터가 포함될 수 있습니다.
+
+</br>
+
+## .resources 파일에서 리소스 검색
+위성 어셈블리에서 리소스를 배포하지 않더라도 ResourceManager 객체를 사용하여 .resources 파일에서 직접 리소스에 액세스할 수 있습니다.
+### 1) .resources 파일 배포
+애플리케이션 어셈블리 및 위성 어셈블리에 .resources 파일을 포함하는 경우, 각 위성 어셈블리는 같은 파일 이름을 갖지만 위성 어셈블리의 문화권을 반영하는 하위 디렉터리에 배치됩니다. 반면, .resources 파일에서 직접 리소스에 액세스할 경우에는 일반적으로 애플리케이션 디렉터리의 하위 디렉터리인 단일 디렉터리에 모든 .resources 파일을 배치할 수 있습니다. 앱의 기본 .resources 파일의 이름은 문화권에 대한 암시 없이 루트 이름으로만 구성됩니다. 지역화된 각 문화권에 대한 리소스는 이름이 루트 이름과 문화권으로 구성된 파일에 저장됩니다.
+### 2) 리소스 관리자 사용
+리소스를 만들어서 적절한 디렉터리에 배치했으면, ResourcesManager 메서드를 호출하여 리소스를 사용할 수 있도록 CreateFileBasedResourceManager(String, String, Type) 객체를 만돕니다. 첫 번째 매개 변수는 앱의 기본 .resources 파일의 루트 이름을 지정하고 두 번째 매개 변수는 리소스의 위치를 지정합니다. 세 번째 매개 변수는 사용할 ResourceSet 구현을 지정합니다. 세 번째 매개 변수가 null인 경우 기본 런타임 ResourceSet이 사용됩니다.
