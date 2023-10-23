@@ -1,74 +1,5 @@
 # .NET 리버싱에 관하여
 
-## 목차
-  * [.NET 정보를 얻는 방법](#net----------)
-  * [CLR(공용 언어 런타임)](#clr-----------)
-  * [관리되는 실행 프로세스](#------------)
-  * [관리되는 컴파일](#--------)
-  * [CIL의 이해](#cil----)
-    + [CIL Directives](#cil-directives)
-    + [CIL Attributes](#cil-attributes)
-    + [CIL Opcodes](#cil-opcodes)
-  * [CIL 예시 #1 : Test.il](#cil-----1---testil)
-  * [CIL 예시 #2 : MathFun.il](#cil-----2---mathfunil)
-  * [Assembly Directives](#assembly-directives)
-    + [.assembly extern](#assembly-extern)
-    + [.assembly](#assembly)
-    + [.module](#module)
-    + [.imagebase](#imagebase)
-    + [.stackreverse](#stackreverse)
-    + [.subsystem](#subsystem)
-    + [.corflags](#corflags)
-    + [.maxstack](#maxstack)
-  * [Class Directives](#class-directives)
-    + [.class](#class)
-    + [.property](#property)
-    + [.method](#method)
-  * [Main() Method Directives](#main---method-directives)
-    + [.locals](#locals)
-  * [CIL 데이터 타입](#cil-------)
-  * [MSIL 코드 레이블](#msil-------)
-  * [MSIL Opcodes](#msil-opcodes)
-    + [rem](#rem)
-    + [ldelem.u1](#ldelemu1)
-    + [ldelem.ref](#ldelemref)
-    + [stelem.i1](#stelemi1)
-    + [conv.u1](#convu1)
-    + [Callvirt](#callvirt)
-    + [stsfld](#stsfld)
-    + [newarr](#newarr)
-    + [dup](#dup)
-    + [sub.ovf](#subovf)
-    + [ldlen](#ldlen)
-    + [예시](#--)
-    + [Boxing](#boxing)
-  
-  * [인터페이스](#-----)
-  * [MSIL 코드 생성](#msil------)
-  * [메타데이터 및 자동 기술 구성 요소](#-------------------)
-    + [어셈블리 기술 내용](#----------)
-    + [형식 기술 내용](#--------)
-    + [특성](#--)
-    + [메타데이터 및 PE 파일 구조](#--------pe------)
-      - [메타데이터 테이블 및 힙](#-------------)
-      - [메타데이터 토큰](#--------)
-  * [Opcodes.Ldtoken 필드](#opcodesldtoken---)
-  * [Type.GetTypeFromHandle(RuntimeTypeHandle)](#typegettypefromhandle-runtimetypehandle-)
-  * [ResourceManager(Type)](#resourcemanager-type-)
-  * [.resources 파일의 리소스](#resources--------)
-  * [.resources 파일에서 리소스 검색](#resources------------)
-    + [1) .resources 파일 배포](#1--resources------)
-    + [2) 리소스 관리자 사용](#2------------)
-  * [애플리케이션 도메인 및 어셈블리](#-----------------)
-  * [애플리케이션 도메인과 스레드](#---------------)
-  * [AppDomain.CurrentDomain 속성](#appdomaincurrentdomain---)
-  * [AppDomain.Load(Byte[])](#appdomainload-byte---)
-  * [Assembly.GetTypes 메서드](#assemblygettypes----)
-  * [Type.GetMethods 메서드](#typegetmethods----)
-  * [파일 기반 리소스 로딩](#------------)
-
-</br>
-
 ## .NET 정보를 얻는 방법
 PE 파일 형식에 담긴 .NET 정보는 최소한이며, .NET 실행파일의 목적은 메타데이터와 IL(Intermediate Language) 정보를 운영체제로부터 얻어내는 것입니다. .NET 파일은 결국 MSCOREE.DLL에 연결되어 있고, 이 DLL은 .NET 실행파일의 엔트리 포인트가 됩니다. .NET 실행파일이 실행될 때 엔트리 포인트는 아주 작은 스텁 코드이며, 이 스텁 코드는 MSCOREE.DLL 파일 안에 있는 함수로 바로 이동하도록 되어 있는데 이는 _CorExeMain이거나 _CorDllMain입니다. 그러면 MSCOREE.DLL은 메타데이터와 IL을 이용해 파일을 실행합니다. .NET에 관한 정보는 IMAGE_COR20_HEADER 구조체에 담겨 있습니다.
 
@@ -608,5 +539,4 @@ System.Resources.ResourceWriter 클래스를 사용하여 프로그래밍 방식
 * 클래스명 : Properties
 * 리소스 위치 : Project\bin\Debug\Resources\Project.Properties.Resources.resources
 * 로딩 방식
-  
   > ResourceManager rsm = ResourceManager.CreateFileBasedResourceManager(“Project.Properties.Resources“, “Resources“, null);
