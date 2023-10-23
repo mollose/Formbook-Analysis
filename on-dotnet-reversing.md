@@ -495,3 +495,48 @@ System.Resources.ResourceWriter 클래스를 사용하여 프로그래밍 방식
 애플리케이션 어셈블리 및 위성 어셈블리에 .resources 파일을 포함하는 경우, 각 위성 어셈블리는 같은 파일 이름을 갖지만 위성 어셈블리의 문화권을 반영하는 하위 디렉터리에 배치됩니다. 반면, .resources 파일에서 직접 리소스에 액세스할 경우에는 일반적으로 애플리케이션 디렉터리의 하위 디렉터리인 단일 디렉터리에 모든 .resources 파일을 배치할 수 있습니다. 앱의 기본 .resources 파일의 이름은 문화권에 대한 암시 없이 루트 이름으로만 구성됩니다. 지역화된 각 문화권에 대한 리소스는 이름이 루트 이름과 문화권으로 구성된 파일에 저장됩니다.
 ### 2) 리소스 관리자 사용
 리소스를 만들어서 적절한 디렉터리에 배치했으면, ResourcesManager 메서드를 호출하여 리소스를 사용할 수 있도록 CreateFileBasedResourceManager(String, String, Type) 객체를 만돕니다. 첫 번째 매개 변수는 앱의 기본 .resources 파일의 루트 이름을 지정하고 두 번째 매개 변수는 리소스의 위치를 지정합니다. 세 번째 매개 변수는 사용할 ResourceSet 구현을 지정합니다. 세 번째 매개 변수가 null인 경우 기본 런타임 ResourceSet이 사용됩니다.
+
+</br>
+
+## 애플리케이션 도메인 및 어셈블리
+어셈블리에 포함되어 있는 코드를 실행하려면 먼저 해당 어셈블리를 애플리케이션 도메인에 로드해야 합니다. 일반적으로 애플리케이션을 실행하면 여러 어셈블리가 애플리케이션 도메인에 로드됩니다.
+* 어셈블리가 도메인 중립적으로 로드된 경우 동일한 보안 권한 보유 집합을 공유하는 모든 애플리케이션 도메인에서 동일한 JIT 컴파일된 코드를 공유할 수 있습니다. 그러나 어셈블리를 프로세스에서 로드할 수는 없습니다.
+* 어셈블리가 도메인 중립적으로 로드되지 않은 경우 해당 어셈블리가 로드된 모든 애플리케이션 도메인에서 어셈블리를 JIT 컴파일해야 합니다. 그러나 어셈블리가 로드된 모든 애플리케이션 도메인을 언로드하여 어셈블리를 언로드할 수는 있습니다.
+
+</br>
+
+## 애플리케이션 도메인과 스레드
+애플리케이션 도메인과 스레드 간에는 일대일 상관관계가 없습니다. 일부 스레드는 어느 시점에서든 단일 애플리케이션 도메인에서 실행될 수 있으며, 특정 스레드는 단일 애플리케이션 도메인으로 제한되지 않습니다. 즉, 스레드는 크로스 애플리케이션 도메인 경계에 종속되지 않고 각 애플리케이션 도메인에 대해 새 스레드가 만들어지지 않습니다.
+
+</br>
+
+## AppDomain.CurrentDomain 속성
+현재 스레드에 대한 현재 애플리케이션 도메인을 가져옵니다.
+
+</br>
+
+## AppDomain.Load(Byte[]) 
+내보낸 어셈블리가 들어 있는 COFF(Common Object File Format) 기반 이미지를 사용한 어셈블리를 로드합니다.
+
+</br>
+
+## Assembly.GetTypes 메서드
+> public virtual Type[] GetTypes();
+* 반환 : 이 어셈블리에 정의되어 있는 모든 타입이 포함된 배열입니다.
+
+</br>
+
+## Type.GetMethods 메서드
+> public System.Reflection.MethodInfo[] GetMethods();
+* 반환 : 현재 타입에 대해 정의된 모든 public 메서드를 나타내는 MethodInfo 객체들의 배열입니다.
+
+</br>
+
+## 파일 기반 리소스 로딩 
+파일 Project.Properties.Resources.resources의 경우,
+* 프로젝트명 : Project
+* 이름공간명 : Project
+* 클래스명 : Properties
+* 리소스 위치 : Project\bin\Debug\Resources\Project.Properties.Resources.resources
+* 로딩 방식
+  > ResourceManager rsm = ResourceManager.CreateFileBasedResourceManager(“Project.Properties.Resources“, “Resources“, null);
