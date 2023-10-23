@@ -312,3 +312,15 @@ class directive 역시 다양한 attribute들로 꾸며지며, 다음은 가장 
 ## CIL 데이터 타입
 
 ![cildatatype](https://github.com/mollose/Formbook-Analysis/assets/57161613/ae407adc-725a-44b8-991f-37ac1d05f396)
+
+</br>
+
+## MSIL 코드 레이블
+IL_XXX(예를 들어, IL_0000, IL_0002)와 같은 토큰들은 코드 레이블들이라 불리고 완전히 부가적이며, 어떤 방식으로든 이름 지어질 수 있습니다.
+
+</br>
+
+## MSIL Opcodes
+CIL opcode들의 전체 셋은 다음 부분들로 나누어질 수 있습니다.
+![msilopcodes](https://github.com/mollose/Formbook-Analysis/assets/57161613/18a6d414-a438-4754-b1e3-625bd97d658b)
+
