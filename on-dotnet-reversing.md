@@ -247,7 +247,7 @@ CIL 코드를 사용해 어셈블리를 빌드하거나 수정할 때, peverify.
 어셈블리는 다음과 같이 바이너리에 친근한 이름을 명시함으로써 정의될 수 있습니다.
 > .assembly CILType {}
 
-다음과 같은, 어셈블리 블록에 대해 가용한 몇몇 sub-directive들이 존재함
+다음과 같은, 어셈블리 블록에 대해 가용한 몇몇 sub-directive들이 존재합니다.
 * .ver
 * .locale
 * .publickey
@@ -264,3 +264,36 @@ CIL 코드를 사용해 어셈블리를 빌드하거나 수정할 때, peverify.
 IL only assembly를 규정하는 CLI 헤더 내의 런타임 플래그를 설정합니다. corflags에 대한 기본값은 1입니다.
 ### .maxstack
 실행 중에 스택에 push될 변수들의 최대 개수를 설정합니다. 기본값은 8입니다.
+
+</br>
+
+## Class Directives
+### .class
+새로운 참조, 값, 또는 인터페이스 타입을 정의하며, 구문은 다음과 같습니다.
+> attributes classname extends basetype implements interface
+
+class directive 역시 다양한 attribute들로 꾸며지며, 다음은 가장 많이 쓰이는 목록입니다.
+* abstract : 클래스가 인스턴스화될 수 없음을 나타냅니다.
+* ansi와 Unicode : 문자열 포맷을 결정합니다.
+* auto : 필드들의 메모리 레이아웃을 CLR이 제어합니다.
+* beforefieldinit : 정적 클래스가 접근되기 전, 타입은 초기화되어야 합니다.
+* private와 public : 클래스 밖에서의 가시성을 설정합니다.
+### .property 
+클래스에 property 멤버를 추가하며 구문은 다음과 같습니다.
+> .property attributes return propertyname parameters default {body}
+### .method
+클래스 내의 메서드를 정의하며, 구문은 다음과 같습니다.
+> .method attributes callingconv return methodname arguments {body}
+#### attribute
+메서드 attribute는 다음과 같은 몇몇 추가적인 attribute들을 가집니다.
+* hidebysig : 이 메서드의 베이스 클래스 인터페이스를 숨깁니다.
+* Specialname : get_Property와 set_Property와 같은 특수한 메서드들에 사용됩니다.
+* Rtspecialname : 생성자로서 참조되는 특수한 메서드를 나타냅니다.
+* Cil 또는 il : 메서드가 MSIL 코드를 담고 있습니다.
+* Native : 메서드가 플랫폼 특정적 코드를 담고 있습니다.
+* Managed : 구현이 관리됨을 나타냅니다.
+#### .field
+클래스에 대한 상태 정보인 새롭게 정의된 필드를 나타냅니다. 구문은 다음과 같습니다.
+> .field attributes type fieldname
+
+
