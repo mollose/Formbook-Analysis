@@ -57,3 +57,10 @@ JIT 컴파일러에서 생성된 코드는 컴파일을 트리거한 프로세�
 
 ## CIL의 이해
 CIL은 그저 또 다른 구조적인 .NET 프로그래밍 언어이며, CIL과, .NET 프레임워크에 내장된 CIL 컴파일러(ILASM.EXE)를 사용해 직접 .NET 어셈블리를 빌드하는 것도 가능합니다. CIL에 대한 지식은, 이미 있는 어셈블리를 디스어셈블하고, CIL 코드를 수정하고, 갱신된 코드를 재컴파일할 수 있게 해주며, 또한 CIL은 CTS(Common Type System)와 CLS(Common Language Specification. CLS ⊂ CTS ⊂ CLR)의 각 측면에 접근할 수 있도록 허용하는 유일한 .NET 프로그래밍 언어입니다. CIL 컴파일러에 의해 이해된 토큰 셋은 세 카테고리로 나누어집니다. CIL 토큰의 각 카테고리는 특정 구문을 통해 표현되며, 이러한 세 카테고리는 다음과 같습니다.
+
+### CIL Directives
+Directive들은 하나의 점 접두사에 의해 구문적으로 나타내어집니다.(.class, .assembly) 그것들은 어셈블리를 채울 이름공간, 클래스, 그리고 메서드들을 정의하기 위해 CIL 컴파일러에게 알리는 데 사용됩니다.
+### CIL Attributes
+종종 CIL directive들은 주어진 타입의 정의를 완전히 표현하기에 충분히 기술적이지 않지만, 그것들은 다양한 CIL attribute들로써 더욱 잘 명시될 수 있고 directive가 어떻게 처리되어야 하는지를 기술할 수 있습니다.
+### CIL Opcodes
+codesm 또는 opcode 연산은, 한때 .NET 어셈블리 이름공간과 타입이 CIL 코드에 대해 정의된 타입 구현 로직을 제공합니다.
