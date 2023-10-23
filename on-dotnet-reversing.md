@@ -24,8 +24,6 @@
     + [.class](#class)
     + [.property](#property)
     + [.method](#method)
-      - [attribute](#attribute)
-      - [.field](#field)
   * [Main() Method Directives](#main---method-directives)
     + [.locals](#locals)
   * [CIL 데이터 타입](#cil-------)
