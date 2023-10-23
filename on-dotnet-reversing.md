@@ -69,7 +69,7 @@ CIL 코드를 사용해 어셈블리를 빌드하거나 수정할 때, peverify.
 
 </br>
 
-## CIL 예제 #1 : Test.il
+## CIL 예시 #1 : Test.il
 
 ```
 // mscorlib 라이브러리에 대한 외부 참조
@@ -105,7 +105,7 @@ CIL 코드를 사용해 어셈블리를 빌드하거나 수정할 때, peverify.
 
 </br>
 
-## CIL 예제 #2 : MathFun.il
+## CIL 예시 #2 : MathFun.il
 ```
 .assembly extern mscorlib
 {    
@@ -365,4 +365,16 @@ IL_0020: clt
 IL_0022: stloc.2
 IL_0023: ldloc.2
 IL_0024: brtrue.s		IL_0007
+```
+### Boxing
+Boxing은 값 타입을 참조 타입(System.Object)으로 명시적으로 할당하는 과정입니다. 어떤 값을 box한다면, CLR은 힙에 새 객체를 할당하고 값들을 해당 인스턴스로 복사합니다. 반대 연산은 unboxing으로, 참조 내에 주어진 값을 다시 상응하는 값 타입으로 변환합니다.
+```
+.locals init ([0] int32 x, [1] object bObj, [2] int32 y)
+// 중략
+IL_0004: ldloc.0
+IL_0005: box		      [mscorlib]System.Int32
+IL_000a: stloc.1
+IL_000b: ldloc.1
+IL_000c: unbox.any		[mscorlib]System.Int32
+IL_00011: stloc.2
 ```
