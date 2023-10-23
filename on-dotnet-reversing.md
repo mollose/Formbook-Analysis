@@ -102,3 +102,137 @@ CIL 코드를 사용해 어셈블리를 빌드하거나 수정할 때, peverify.
   }
 }
 ```
+
+</br>
+
+## CIL 예제 #2 : MathFun.il
+```
+.assembly extern mscorlib
+{    
+  .publickeytoken = (B7 7A 5C 56 19 34 E0 89 )    
+  .ver 2:0:0:0
+}
+.assembly MathFun
+{    
+  .ver 1:0:0:0    
+  .locale “en.US“
+}
+.module MathFun.exe
+
+.imagebase 0x00400000
+.file alignment 0x00000200
+.stackreverse 0x00100000
+.subsystem 0x0003
+.corflags 0x00000003
+
+.class public auto ansi beforefieldinit MathFun extends [mscorlib]System.Object
+{
+  // 다음 메서드는 C# 버전과 마찬가지로 생성자 명세를 구현함
+  // public Test(string name) {this.Name = name;}
+  .field private string ’<Name>k__BackingField’
+  .custom instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 )
+  .method public hidebysig specialname rtspecialname instance void .ctor(string name) cil managed
+  {
+    .maxstack	8
+    IL_0000: ldarg.0
+    IL_0001: call		instance void [mscorlib]System.Object::.ctor()
+    IL_0006: nop
+    IL_0007: nop
+    IL_0008: ldarg.0
+    IL_0009: ldarg.1
+    IL_000a: call		instance void MathFun::set_Name(string)
+    IL_000f: nop
+    IL_0010: nop
+    IL_0011: ret
+  }
+
+  .method public hidebysig specialname instance string get_Name() cil managed
+  {
+    .custom instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 )
+    .maxstack	1
+    .locals init (string V_0)
+    IL_0000: ldarg.0
+    IL_0001: ldfld		string MathFun::’<Name>k__BackingField’       
+    IL_0006: stloc.0
+    IL_0007: br.s     IL_0009
+    IL_0009: ldloc.0       
+    IL_000a: ret
+  }
+
+  .method public hidebysig specialname instance void set_Name(string ’value’) cil managed
+  {
+    .custom instance void [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::.ctor() = ( 01 00 00 00 )
+    .maxstack	8
+    IL_0000: ldarg.0
+    IL_0001: ldarg.1
+    IL_0002: stfld		string MathFun::’<Name>k__BackingField’
+    IL_0007: ret
+  }
+
+  .method public hidebysig instance string Display() cil managed
+  {
+    .maxstack	2
+    .locals init ([0] string CS$1$0000)
+    IL_0000: nop
+    IL_0001: ldstr		“Hello “
+    IL_0006: ldarg.0
+    IL_0007: call		instance string MathFun::get_Name()
+    IL_000c: call		string [mscorlib]System.String::Concat(string, string)
+    IL_0011: stloc.0
+    IL_0012: br.s		IL_0014
+    IL_0014: ldloc.0
+    IL_0015: ret
+  }
+
+  .method public hidebysig instance int32 Addition(int32 x, int32 y) cil managed
+  {
+    .maxstack	2
+    .locals init ([0] int32 CS$1$0000)
+    IL_0000: nop
+    IL_0001: ldarg.1
+    IL_0002: ldarg.2
+    IL_0003: add
+    IL_0004: stloc.0
+    IL_0005: br.s		IL_0007
+    IL_0007: ldloc.0
+    IL_0008: ret
+  }
+
+  // 다음의 C# 코드와 같이 property를 정의함
+  // public String Name {get; set;}
+  .property instance string Name()
+  {
+    .get instance string MathFun::get_Name()
+    .set instance void MathFun::set_Name(string)
+  }
+}
+
+.class private auto ansi beforefieldinit MathFun extends [mscorlib]System.Object
+{
+  .method private hidebysig static void Main(string[] args) cil managed
+  {
+    .entrypoint
+    .maxstack	4
+    .locals init ([0] class MathFun obj)
+    IL_0000: nop
+    IL_0001: ldstr		“Ajay“
+    IL_0006: newobj	instance void MathFun::.ctor(string)
+    IL_000b: stloc.0
+    IL_000c: ldloc.0
+    IL_000d: callvirt	instance string MathFun::Display()
+    IL_0012: call		void [mscorlib]System.Console::WriteLine(string)
+    IL_0017: nop
+    IL_0018: ldstr		“Addition is: {0}“
+    IL_001d: ldloc.0
+    IL_001e: ldc.i4.s	15
+    IL_0020: ldc.i4.s	35
+    IL_0022: callvirt	instance int32 MathFun::Addition(int32, int32)
+    IL_0027: box		[mscorlib]System.Int32
+    IL_002c: call		void [mscorlib]System.Console::WriteLine(string, object)
+    IL_0031: nop
+    IL_0032: call		valuetype [mscorlib]System.ConsoleKeyInfo [mscorlib]System.Console::ReadKey()
+    IL_0037: pop
+    IL_0038: ret
+  }
+}
+```
