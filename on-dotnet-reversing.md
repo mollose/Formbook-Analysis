@@ -6,8 +6,8 @@
 - [관리되는 실행 프로세스](#관리되는-실행-프로세스)
 - [관리되는 컴파일](#관리되는-컴파일)
 - [CIL의 이해](#cil의-이해)
-- [CIL 예시 #1 : Test.il](#cil-예시-1--testil)
-- [CIL 예시 #2 : MathFun.il](#cil-예시-2--mathfunil)
+- [CIL 예시 #1: Test.il](#cil-예시-1-testil)
+- [CIL 예시 #2: MathFun.il](#cil-예시-2-mathfunil)
 - [Assembly Directives](#assembly-directives)
   * [.assembly extern](#assembly-extern)
   * [.assembly](#assembly)
@@ -128,7 +128,7 @@ CIL 코드를 사용해 어셈블리를 빌드하거나 수정할 때, peverify.
 
 </br>
 
-## CIL 예시 #1 : Test.il
+## CIL 예시 #1: Test.il
 
 ```
 // mscorlib 라이브러리에 대한 외부 참조
@@ -164,7 +164,7 @@ CIL 코드를 사용해 어셈블리를 빌드하거나 수정할 때, peverify.
 
 </br>
 
-## CIL 예시 #2 : MathFun.il
+## CIL 예시 #2: MathFun.il
 ```
 .assembly extern mscorlib
 {    
